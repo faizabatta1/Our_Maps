@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jQuery" Version="3.6.3" />
+    <PackageReference Include="leaflet" Version="0.7.3" />
+    <PackageReference Include="leaflet.fullscreen.TypeScript.DefinitelyTyped" Version="0.9.9" />
+    <PackageReference Include="leaflet.TypeScript.DefinitelyTyped" Version="0.0.1" />
+    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="20.4.0.50" />
+  </ItemGroup>
+
+</Project>

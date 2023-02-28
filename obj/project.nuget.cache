@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "Y4lvv/eT4y8jIPVFUs1Ln1zaturLmVgtXKSHoEwYp7KxZhuSZUceVsTU2zbLTO/WYl3VrMBvRh2x6zkwy5WGkg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\FaizaBatta\\source\\repos\\Our_Map_v2\\Our_Map_v2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\FaizaBatta\\.nuget\\packages\\geojson.typescript.definitelytyped\\0.0.1\\geojson.typescript.definitelytyped.0.0.1.nupkg.sha512",
+    "C:\\Users\\FaizaBatta\\.nuget\\packages\\jquery\\3.6.3\\jquery.3.6.3.nupkg.sha512",
+    "C:\\Users\\FaizaBatta\\.nuget\\packages\\leaflet\\0.7.3\\leaflet.0.7.3.nupkg.sha512",
+    "C:\\Users\\FaizaBatta\\.nuget\\packages\\leaflet.fullscreen.typescript.definitelytyped\\0.9.9\\leaflet.fullscreen.typescript.definitelytyped.0.9.9.nupkg.sha512",
+    "C:\\Users\\FaizaBatta\\.nuget\\packages\\leaflet.typescript.definitelytyped\\0.0.1\\leaflet.typescript.definitelytyped.0.0.1.nupkg.sha512",
+    "C:\\Users\\FaizaBatta\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\FaizaBatta\\.nuget\\packages\\syncfusion.ej2.aspnet.core\\20.4.0.50\\syncfusion.ej2.aspnet.core.20.4.0.50.nupkg.sha512",
+    "C:\\Users\\FaizaBatta\\.nuget\\packages\\syncfusion.licensing\\20.4.0.50\\syncfusion.licensing.20.4.0.50.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1602",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "leaflet.fullscreen.TypeScript.DefinitelyTyped 0.9.9 does not provide an inclusive lower bound for dependency geojson.TypeScript.DefinitelyTyped. An approximate best match of geojson.TypeScript.DefinitelyTyped 0.0.1 was resolved.",
+      "libraryId": "geojson.TypeScript.DefinitelyTyped",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
+}
