@@ -5,10 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-string path = Directory.GetCurrentDirectory();
 
 builder.Services.AddDbContext<StoreDbContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("Our_Map_Connection").Replace("[DataDirectory]", path))
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("Our_Map_Connection"))
 );
 
 var app = builder.Build();

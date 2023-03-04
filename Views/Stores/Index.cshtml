@@ -47,19 +47,30 @@
 </table>
 
 <script src="js/leaflet.js"></script>
-<div id="map" style="height: 700px;"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<div id="map" style="height: 350px; width:500px;"></div>
 
 <script>
+    var myBounds = L.latLngBounds(
+        L.latLng(31.847816, 35.120888),// Southwest coordinates
+        // Northeast coordinates
+        L.latLng(31.944297, 35.276413),
+    );
 
-    var map = L.map('map').setView([31.9522, 35.2332], 13);
+    var map = L.map('map',{
+        maxBounds: myBounds, // Set the maximum bounds of the map
+        maxBoundsViscosity: 1.0,
+    }).setView([31.904566, 35.221030], 12);
+
+   
 
 
-        L.tileLayer('scripts/MapsData/test/{z}/{x}/{y}.png', {
+        L.tileLayer('scripts/MapsData/part/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; OpenStreetMap contributors',
             maxZoom: 15,
-            minZoom: 2,
-            tileSize: 512,
-            zoomOffset: -1 //initial zoom
+            minZoom: 12,
         }).addTo(map);
 
 
@@ -69,18 +80,56 @@
         var marker = L.marker([store.lat, store.long],{
             title:store.name
         }).addTo(map)
-        .bindPopup(`<h1>${store.name}</h1>`)
+        .bindPopup(store.name)
         .openPopup();
     }
-    @* $.getJSON("scripts/MapsData/Parkings.json", function (data) {
-        L.geoJSON(data).addTo(map); } );
-        $.getJSON("scripts/MapsData/Roads.json", function (data) {
-        L.geoJSON(data).addTo(map);} );
-        $.getJSON("scripts/MapsData/Buildings.json", function (data) {
-        L.geoJSON(data).addTo(map);
+
+
+
+        $.getJSON("scripts/MapsData/Parkings.json", function (data) {
+            L.geoJSON(data, {
+                style: function (feature) {
+                    return { color: feature.properties.color };
+                }
+            }).bindPopup(function (layer) {
+                return layer.feature.properties.description;
+        }).addTo(map);
         });
+
+
+        $.getJSON("scripts/MapsData/Roads.json", function (data) {
+        L.geoJSON(data, {
+            style: function (feature) {
+                return { color: feature.properties.color };
+            }
+        }).bindPopup(function (layer) {
+            return layer.feature.properties.description;
+        }).addTo(map);
+            console.log(data);
+        });
+
+
+        $.getJSON("scripts/MapsData/Buildings.json", function (data) {
+            console.log(data);
+        L.geoJSON(data, {
+            style: function (feature) {
+                return { color: feature.properties.color };
+            }
+        }).bindPopup(function (layer) {
+            return layer.feature.properties.description;
+        }).addTo(map);
+        });
+
+
         $.getJSON("scripts/MapsData/Boundaries.json", function (data) {
-        L.geoJSON(data).addTo(map);
-        }); *@
+            console.log(data);
+        L.geoJSON(data, {
+            style: function (feature) {
+                return { color: feature.properties.color };
+            }
+        }).bindPopup(function (layer) {
+            return layer.feature.properties.description;
+        }).addTo(map);
+        });
 
 </script>
