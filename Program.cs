@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Our_Map_v2.Database;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+string path = Directory.GetCurrentDirectory();
+
+builder.Services.AddDbContext<StoreDbContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("Our_Map_Connection").Replace("[DataDirectory]", path))
+);
 
 var app = builder.Build();
 

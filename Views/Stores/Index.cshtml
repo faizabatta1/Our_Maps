@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Our_Map_v2.Database.Store>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Long)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Long)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<script src="js/leaflet.js"></script>
+<div id="map" style="height: 700px;"></div>
+
+<script>
+
+    var map = L.map('map').setView([31.9522, 35.2332], 13);
+
+
+        L.tileLayer('scripts/MapsData/test/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; OpenStreetMap contributors',
+            maxZoom: 15,
+            minZoom: 2,
+            tileSize: 512,
+            zoomOffset: -1 //initial zoom
+        }).addTo(map);
+
+
+    var stores = @Html.Raw(Json.Serialize(Model));
+
+    for(let store of stores){
+        var marker = L.marker([store.lat, store.long],{
+            title:store.name
+        }).addTo(map)
+        .bindPopup(`<h1>${store.name}</h1>`)
+        .openPopup();
+    }
+    @* $.getJSON("scripts/MapsData/Parkings.json", function (data) {
+        L.geoJSON(data).addTo(map); } );
+        $.getJSON("scripts/MapsData/Roads.json", function (data) {
+        L.geoJSON(data).addTo(map);} );
+        $.getJSON("scripts/MapsData/Buildings.json", function (data) {
+        L.geoJSON(data).addTo(map);
+        });
+        $.getJSON("scripts/MapsData/Boundaries.json", function (data) {
+        L.geoJSON(data).addTo(map);
+        }); *@
+
+</script>
